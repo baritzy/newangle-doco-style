@@ -31,13 +31,7 @@ body{
   font-family:var(--sans); font-size:16px; line-height:1.5;
   -webkit-text-size-adjust:100%;
 }
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px 40px}
-
-/* ---------- head ---------- */
-header{padding:56px 0 30px}
-h1{font-family:var(--display);font-size:clamp(26px,4.4vw,38px);line-height:1.15;font-weight:600;margin:0;letter-spacing:-.01em}
-.sub{color:var(--ink-2);font-size:15px;margin:10px 0 0;max-width:56ch}
-.hint{color:var(--ink-3);font-size:13px;margin:6px 0 0}
+.wrap{max-width:1120px;margin:0 auto;padding:56px 20px 40px}
 
 /* ---------- option block ---------- */
 .opt{
@@ -45,6 +39,7 @@ h1{font-family:var(--display);font-size:clamp(26px,4.4vw,38px);line-height:1.15;
   padding:38px 0 40px;
   margin:0 -20px; padding-inline:20px;
 }
+.opt:first-child{border-top:0;padding-top:0}
 .opt-head{display:flex;align-items:center;gap:10px;margin:0 0 18px}
 .opt h2{font-family:var(--display);font-size:19px;font-weight:600;margin:0;letter-spacing:.01em}
 
@@ -88,8 +83,7 @@ body.locked{overflow:hidden}
 @media (max-width:760px){
   .opt{margin:0 -16px;padding-inline:16px}
   .lb{padding:60px 12px 46px}
-  header{padding:38px 0 22px}
-  .wrap{padding:0 16px 32px}
+  .wrap{padding:38px 16px 32px}
   .pair{grid-template-columns:1fr;gap:20px}
   .opt{padding:30px 0 32px}
 }
@@ -98,12 +92,6 @@ body.locked{overflow:hidden}
 <body>
 
 <div class="wrap">
-
-  <header>
-    <h1>בחירת סגנון האנימציה</h1>
-    <p class="sub">ארבע אופציות לסגנון האנימציה של הסרט. כל אחת מוצגת בשחור-לבן ובצבע.</p>
-    <p class="hint">לחיצה על תמונה פותחת אותה בגדול.</p>
-  </header>
 
   <main>
 
