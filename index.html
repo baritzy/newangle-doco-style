@@ -10,7 +10,7 @@
   --paper:#F2F4F1; --surface:#FFFFFF; --surface-2:#F6F8F4;
   --ink:#141A18; --ink-2:#4B554F; --ink-3:#7C867F;
   --line:#DDE1DB; --line-2:#EAEDE8;
-  --accent:#1D5C58; --accent-soft:rgba(29,92,88,.06);
+  --accent:#1D5C58;
   --shadow:0 1px 2px rgba(20,26,24,.05), 0 1px 10px rgba(20,26,24,.04);
   --sans:system-ui,-apple-system,"Segoe UI","Noto Sans Hebrew","Arial Hebrew",Arial,sans-serif;
   --display:"New Peninim MT","Narkisim","Frank Ruehl CLM","Noto Serif Hebrew","Times New Roman",serif;
@@ -20,7 +20,7 @@
     --paper:#101413; --surface:#181E1B; --surface-2:#1C2320;
     --ink:#E9ECE7; --ink-2:#A9B3AC; --ink-3:#87918A;
     --line:#2A322D; --line-2:#232A26;
-    --accent:#5CBDB5; --accent-soft:rgba(92,189,181,.09);
+    --accent:#5CBDB5;
     --shadow:0 1px 2px rgba(0,0,0,.32);
   }
 }
@@ -44,17 +44,9 @@ h1{font-family:var(--display);font-size:clamp(26px,4.4vw,38px);line-height:1.15;
   border-top:1px solid var(--line);
   padding:38px 0 40px;
   margin:0 -20px; padding-inline:20px;
-  transition:background .18s ease;
 }
-.opt.on{background:var(--accent-soft)}
 .opt-head{display:flex;align-items:center;gap:10px;margin:0 0 18px}
 .opt h2{font-family:var(--display);font-size:19px;font-weight:600;margin:0;letter-spacing:.01em}
-.mark{
-  font-size:12px;line-height:1;color:var(--accent);border:1px solid var(--accent);
-  border-radius:99px;padding:5px 10px;opacity:0;transform:translateY(-1px);
-  transition:opacity .18s ease;
-}
-.opt.on .mark{opacity:1}
 
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 figure{margin:0;min-width:0}
@@ -74,36 +66,10 @@ figure{margin:0;min-width:0}
 .shot:hover .frame,.shot:focus-visible .frame{border-color:var(--ink-3)}
 .shot:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:8px}
 figcaption{font-size:12px;color:var(--ink-3);margin:9px 2px 0;letter-spacing:.02em}
-.opt.on .frame{border-color:var(--accent)}
-
-/* ---------- choose ---------- */
-.choose{margin:22px 0 0}
-.pick{
-  font:inherit;font-size:15px;font-weight:600;line-height:1;
-  padding:15px 26px;border-radius:8px;cursor:pointer;
-  border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
-  transition:background .16s ease,color .16s ease,border-color .16s ease;
-}
-.pick:hover{border-color:var(--ink-3);color:var(--ink)}
-.pick:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.opt.on .pick{background:var(--accent);border-color:var(--accent);color:#fff}
-@media (prefers-color-scheme: dark){ .opt.on .pick{color:#0C1210} }
-.pick .on-t{display:none}
-.opt.on .pick .off-t{display:none}
-.opt.on .pick .on-t{display:inline}
 
 /* ---------- footer ---------- */
 .foot{border-top:1px solid var(--line);padding:34px 0 0}
-label.nl{display:block;font-size:13.5px;color:var(--ink-2);margin:0 0 8px}
-textarea{
-  width:100%;max-width:70ch;font:inherit;font-size:14.5px;line-height:1.5;color:var(--ink);
-  background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;
-  resize:vertical;min-height:96px;
-}
-textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
-.status{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:12.5px;color:var(--ink-3)}
-.status .dot{width:6px;height:6px;border-radius:99px;background:var(--accent);flex:none;opacity:.55}
-.close-note{font-size:13.5px;color:var(--ink-2);margin:20px 0 0;max-width:60ch}
+.close-note{font-size:13.5px;color:var(--ink-2);margin:0;max-width:60ch}
 
 /* ---------- lightbox ---------- */
 .lb{
@@ -130,7 +96,6 @@ body.locked{overflow:hidden}
   .wrap{padding:0 16px 32px}
   .pair{grid-template-columns:1fr;gap:20px}
   .opt{padding:30px 0 32px}
-  .pick{width:100%;padding:16px 20px}
 }
 </style>
 </head>
@@ -144,12 +109,11 @@ body.locked{overflow:hidden}
     <p class="hint">לחיצה על תמונה פותחת אותה בגדול.</p>
   </header>
 
-  <main id="opts">
+  <main>
 
-    <section class="opt" data-opt="1">
+    <section class="opt">
       <div class="opt-head">
         <h2>אופציה 1</h2>
-        <span class="mark">נבחרה</span>
       </div>
       <div class="pair">
         <figure>
@@ -165,17 +129,11 @@ body.locked{overflow:hidden}
           <figcaption>צבע</figcaption>
         </figure>
       </div>
-      <div class="choose">
-        <button class="pick" type="button" aria-pressed="false">
-          <span class="off-t">בוחר באופציה הזו</span><span class="on-t" hidden>האופציה שנבחרה</span>
-        </button>
-      </div>
     </section>
 
-    <section class="opt" data-opt="2">
+    <section class="opt">
       <div class="opt-head">
         <h2>אופציה 2</h2>
-        <span class="mark">נבחרה</span>
       </div>
       <div class="pair">
         <figure>
@@ -191,17 +149,11 @@ body.locked{overflow:hidden}
           <figcaption>צבע</figcaption>
         </figure>
       </div>
-      <div class="choose">
-        <button class="pick" type="button" aria-pressed="false">
-          <span class="off-t">בוחר באופציה הזו</span><span class="on-t" hidden>האופציה שנבחרה</span>
-        </button>
-      </div>
     </section>
 
-    <section class="opt" data-opt="3">
+    <section class="opt">
       <div class="opt-head">
         <h2>אופציה 3</h2>
-        <span class="mark">נבחרה</span>
       </div>
       <div class="pair">
         <figure>
@@ -217,20 +169,12 @@ body.locked{overflow:hidden}
           <figcaption>צבע</figcaption>
         </figure>
       </div>
-      <div class="choose">
-        <button class="pick" type="button" aria-pressed="false">
-          <span class="off-t">בוחר באופציה הזו</span><span class="on-t" hidden>האופציה שנבחרה</span>
-        </button>
-      </div>
     </section>
 
   </main>
 
   <section class="foot">
-    <label class="nl" for="note">הערה</label>
-    <textarea id="note" placeholder="משהו שתרצה להוסיף על הבחירה"></textarea>
-    <div class="status"><span class="dot"></span><span id="saved">עוד לא נשמר</span></div>
-    <p class="close-note">הבחירה וההערה נשמרות אצלך בדפדפן. כשתסיים, עדכן אותנו איזו אופציה בחרת.</p>
+    <p class="close-note">מוזמן לעבור על שלוש האופציות ולהגיד לנו איזו מדברת אליך.</p>
   </section>
 
 </div>
@@ -244,69 +188,12 @@ body.locked{overflow:hidden}
 <script>
 (function(){
   "use strict";
-  var KEY = "yigal-style-choice-v1";
-  var opts = Array.prototype.slice.call(document.querySelectorAll(".opt"));
-  var note = document.getElementById("note");
-  var savedEl = document.getElementById("saved");
-  var choice = null;
 
   /* missing images: keep a quiet frame instead of a broken icon */
   Array.prototype.forEach.call(document.querySelectorAll(".frame img"), function(img){
     img.addEventListener("error", function(){ img.classList.add("gone"); });
     if (img.complete && img.naturalWidth === 0) img.classList.add("gone");
   });
-
-  function stamp(){
-    var d = new Date();
-    var h = String(d.getHours()).padStart(2,"0");
-    var m = String(d.getMinutes()).padStart(2,"0");
-    savedEl.textContent = "נשמר " + h + ":" + m;
-  }
-  function save(){
-    try{
-      localStorage.setItem(KEY, JSON.stringify({ choice: choice, note: note.value, ts: Date.now() }));
-      stamp();
-    }catch(e){
-      savedEl.textContent = "השמירה בדפדפן חסומה";
-    }
-  }
-  function paint(){
-    opts.forEach(function(sec){
-      var on = sec.getAttribute("data-opt") === choice;
-      var btn = sec.querySelector(".pick");
-      sec.classList.toggle("on", on);
-      btn.setAttribute("aria-pressed", on ? "true" : "false");
-      btn.querySelector(".off-t").hidden = on;
-      btn.querySelector(".on-t").hidden = !on;
-    });
-  }
-
-  opts.forEach(function(sec){
-    sec.querySelector(".pick").addEventListener("click", function(){
-      var id = sec.getAttribute("data-opt");
-      if (choice === id) return;
-      choice = id;
-      paint(); save();
-    });
-  });
-
-  var t;
-  note.addEventListener("input", function(){ clearTimeout(t); t = setTimeout(save, 400); });
-  note.addEventListener("blur", save);
-
-  try{
-    var raw = localStorage.getItem(KEY);
-    if (raw){
-      var d = JSON.parse(raw);
-      choice = d.choice || null;
-      note.value = d.note || "";
-      if (d.ts){
-        var dt = new Date(d.ts);
-        savedEl.textContent = "נשמר " + String(dt.getHours()).padStart(2,"0") + ":" + String(dt.getMinutes()).padStart(2,"0");
-      }
-    }
-  }catch(e){}
-  paint();
 
   /* ---------- lightbox ---------- */
   var lb = document.getElementById("lb");
@@ -316,8 +203,7 @@ body.locked{overflow:hidden}
   var last = null;
 
   function open(btn){
-    var src = btn.getAttribute("data-src");
-    lbimg.setAttribute("src", src);
+    lbimg.setAttribute("src", btn.getAttribute("data-src"));
     lbimg.setAttribute("alt", btn.getAttribute("data-cap") || "");
     lbcap.textContent = btn.getAttribute("data-cap") || "";
     lb.classList.add("open");
